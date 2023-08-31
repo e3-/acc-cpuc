@@ -30,7 +30,7 @@ jobs:
 
     - uses: conda-incubator/setup-miniconda@v2
       with:
-        activate-environment: model_template
+        activate-environment: e3-acc
         environment-file: environment-dev.yml
         auto-activate-base: false
     - shell: bash -l {0}

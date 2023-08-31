@@ -1,4 +1,4 @@
-name: model_template_dev
+name: e3-acc-dev
 
 channels:
   - conda-forge

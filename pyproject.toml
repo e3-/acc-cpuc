@@ -1,5 +1,5 @@
 [project]
-name="model_template"
+name="E3 ACC"
 description="E3's Model Template"
 version="0.1.0"
 authors=[
@@ -7,16 +7,13 @@ authors=[
 ]
 requires-python = ">=3.9,<3.11"
 dependencies = [
+    "ipywidgets==8.0.4",
     "jupyterlab==3.5.3",
+    "jupytext==1.14.7",
     "loguru==0.6.0",
-    "numpy==1.24.1",
     "pandas==1.5.3",
     "plotly==5.13.0",
-    "pydantic==1.10.4",
-    "rich==13.3.1",
-    "tqdm==4.64.1",
-    "toml",
-    "typer==0.7.0",
+    "pyomo==6.4.4",
 ]
 
 [project.optional-dependencies]
