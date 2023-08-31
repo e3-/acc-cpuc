@@ -1,0 +1,53 @@
+[project]
+name="model_template"
+description="E3's Model Template"
+version="0.1.0"
+authors=[
+    { name = "Energy and Environmental Economics, Inc." }
+]
+requires-python = ">=3.9,<3.11"
+dependencies = [
+    "jupyterlab==3.5.3",
+    "loguru==0.6.0",
+    "numpy==1.24.1",
+    "pandas==1.5.3",
+    "plotly==5.13.0",
+    "pydantic==1.10.4",
+    "rich==13.3.1",
+    "tqdm==4.64.1",
+    "toml",
+    "typer==0.7.0",
+]
+
+[project.optional-dependencies]
+ui = [
+    "xlwings==0.29.0",
+]
+dev = [
+    "autodoc_pydantic==1.8.0",
+    "commitizen==3.2.2",
+    "darker==1.6.1",
+    "furo==2022.12.7",
+    "graphviz==0.20.1",
+    "myst-parser==0.18.1",
+    "pre-commit==3.0.2",
+    "pytest==7.2.1",
+    "pytest-sugar==0.9.6",
+    "sphinx==5.3.0",
+    "sphinx-copybutton==0.5.1",
+    "sphinx-design==0.3.0",
+]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.black]
+line_length = 120
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_type = "pep440"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
