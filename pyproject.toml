@@ -1,6 +1,6 @@
 [project]
-name="E3 ACC"
-description="E3's Model Template"
+name="e3-acc-cpuc"
+description="2024 ACC Update Staff Proposal, Integrated Generation Capacity & GHG Avoided Cost Calculation."
 version="0.1.0"
 authors=[
     { name = "Energy and Environmental Economics, Inc." }
