@@ -245,7 +245,7 @@ class AvoidedCostModel(pyo.ConcreteModel):
             opt = pyo.SolverFactory(
                 "cbc",
                 solver_io="lp",
-                executable="../solvers/cbc.exe",
+                executable="./solvers/cbc.exe",
             )
         else:
             opt = pyo.SolverFactory(
