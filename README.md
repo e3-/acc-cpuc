@@ -8,7 +8,7 @@ Avoided Cost Calculator (ACC) Staff Proposal. For more information, see the staf
 
 ## Quick Start
 
-_Note: This quick start guide assumes you have already downloaded a zip file of the code from the CPUC IRP website._
+_Note: This quick start guide assumes you have already downloaded a zip file of this model code._
 
 
 ### 1. Install Python via Anaconda 
