@@ -403,7 +403,7 @@ class AvoidedCostModel(pyo.ConcreteModel):
 # +
 # User input
 run_id = "07012023_staff_proposal"
-base_path = pathlib.Path.cwd()
+base_path = pathlib.Path.cwd().parent
 
 
 # Create output folder
