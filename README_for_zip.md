@@ -14,11 +14,9 @@ We recommend using the [Anaconda](https://www.anaconda.com/download#downloads) P
 During the installation process, we recommend selecting the **"Add Anaconda to my PATH environment variable"** option
 so that we have easy access to the `conda` command from the command line.
 
-```{note}
 If you run into any `conda not recognized` or `command not found: conda` messages in the command line in the following steps,
-this means that you **did not** add Anaconda to your PATH. You can add either rerun the installer (easiest) or manually
+this means that you **did not** add Anaconda to your PATH. You can either rerun the installer (easiest) or manually
 add Anaconda to your PATH (see [these instructions](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/) for some help).
-```
 
 ### 2. Set Up a `conda` Environment 
 
