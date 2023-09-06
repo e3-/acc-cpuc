@@ -87,7 +87,7 @@ class AvoidedCostModel(pyo.ConcreteModel):
 
         # Sets
         self.RESOURCE_VINTAGES = pyo.Set(
-            dimen=2, initialize=sorted(list({(resource, vintage) for resource, vintage, modeled_year in df.index}))
+            dimen=2, initialize=sorted(list({(resource, vintage) for resource, vintage, modeled_year in input_data.index}))
         )
         self.YEARS = pyo.Set(initialize=sorted(list(input_data.index.get_level_values(2).unique())))
 
@@ -265,7 +265,7 @@ class AvoidedCostModel(pyo.ConcreteModel):
     # post process results after getting avoided cost prices
     def plot_avoided_costs(self):
         fig = px.line(
-            m.prices,
+            self.prices,
             title="Annual Avoided Costs ($2018)"
         )
         
@@ -314,7 +314,7 @@ class AvoidedCostModel(pyo.ConcreteModel):
     def calculate_all_resource_cashflow(self):
         all_resource_cashflow = pd.DataFrame()
         
-        for resource, vintage in m.RESOURCE_VINTAGES:
+        for resource, vintage in self.RESOURCE_VINTAGES:
             cashflow = self.calculate_one_resource_cash_flow(resource_vintage=(resource, vintage))
 
             # Create a DataFrame for the current vintage's cash flow data
@@ -400,45 +400,47 @@ class AvoidedCostModel(pyo.ConcreteModel):
 
 # # Running Model
 
-# +
-# User input
-run_id = "07012023_staff_proposal"
-base_path = pathlib.Path.cwd()
+def main():
+    # User input
+    run_id = "07012023_staff_proposal"
+    base_path = pathlib.Path(__file__).parent.parent
 
 
-# Create output folder
-outputs_file_path = base_path / "results" / run_id
-outputs_file_path.mkdir(exist_ok=True, parents=True)
+    # Create output folder
+    outputs_file_path = base_path / "results" / run_id
+    outputs_file_path.mkdir(exist_ok=True, parents=True)
 
-# Read resource data csv
-df = read_resource_data(filepath=base_path / "data" / "processed" / run_id / "resource_data.csv")
-# df = df.groupby(["resource", "vintage"]).apply(_interpolate_resource_vintage)
-df = add_discount_factors(df=df, discount_rate=0.054, dollar_year=2018)
+    # Read resource data csv
+    df = read_resource_data(filepath=base_path / "data" / "processed" / run_id / "resource_data.csv")
+    # df = df.groupby(["resource", "vintage"]).apply(_interpolate_resource_vintage)
+    df = add_discount_factors(df=df, discount_rate=0.054, dollar_year=2018)
 
-# Run model
-m = AvoidedCostModel(
-    input_data=df, 
-    first_years_profitable=1, 
-    price_bounds=pd.read_csv(base_path / "data" / "processed" / run_id / "price_bounds.csv", index_col=0, header=[0, 1])
-)
+    # Run model
+    m = AvoidedCostModel(
+        input_data=df,
+        first_years_profitable=1,
+        price_bounds=pd.read_csv(base_path / "data" / "processed" / run_id / "price_bounds.csv", index_col=0, header=[0, 1])
+    )
 
-m.solve()
+    m.solve()
 
-# Output results
-m.prices.to_csv(outputs_file_path / "avoided_costs.csv")
-m.calculate_all_resource_cashflow().to_csv(outputs_file_path / "cash_flow_by_resource.csv")
-m.calculate_all_resource_npv().to_csv(outputs_file_path / "npv_by_resource.csv")
-# -
+    # Output results
+    m.prices.to_csv(outputs_file_path / "avoided_costs.csv")
+    m.calculate_all_resource_cashflow().to_csv(outputs_file_path / "cash_flow_by_resource.csv")
+    m.calculate_all_resource_npv().to_csv(outputs_file_path / "npv_by_resource.csv")
+    # -
 
-# # Plot Results
+    # # Plot Results
 
-# Plot avoided costs
-m.plot_avoided_costs()
+    # Plot avoided costs
+    m.plot_avoided_costs()
 
-# Plot cash flow for one example resource and vintage
-m.plot_resource_cash_flow(resource_vintage=("generic_solar", 2030))
+    # Plot cash flow for one example resource and vintage
+    m.plot_resource_cash_flow(resource_vintage=("generic_solar", 2030))
 
-# Plot NPV for one example resource
-m.plot_npv_net_revenues(resource="generic_solar")
+    # Plot NPV for one example resource
+    m.plot_npv_net_revenues(resource="generic_solar")
 
 
+if __name__ == "__main__":
+    main()
