@@ -23,11 +23,9 @@ We recommend using the [Anaconda](https://www.anaconda.com/download#downloads) P
 During the installation process, we recommend selecting the **"Add Anaconda to my PATH environment variable"** option
 so that we have easy access to the `conda` command from the command line.
 
-```{note}
-If you run into any `conda not recognized` or `command not found: conda` messages in the command line in the following steps,
-this means that you **did not** add Anaconda to your PATH. You can add either rerun the installer (easiest) or manually
-add Anaconda to your PATH (see [these instructions](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/) for some help).
-```
+> If you run into any `conda not recognized` or `command not found: conda` messages in the command line in the following steps,
+> this means that you **did not** add Anaconda to your PATH. You can add either rerun the installer (easiest) or manually
+> add Anaconda to your PATH (see [these instructions](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/) for some help).
 
 We will use the `conda` command to create an isolated virtual environment for this example code to run within, without 
 disturbing any other Python packages you may have already installed (see the [`conda` documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for more details on conda environments).
@@ -40,6 +38,7 @@ Open a [Command Prompt window and navigate to this folder (the "acc-cpuc" folder
 ```
 conda env create -f environment.yml
 ```
+<div style="page-break-after: always;"></div>
 
 ### 2. Activate the `conda` Environment
 
@@ -60,7 +59,7 @@ conda install -c conda-forge coincbc
 
 In the same Command Prompt window, run the following command:
 ```commandline
-python ./src/acc.py
+e3-acc-cpuc
 ```
 
 This will load the included input data from `./data/processed/07012023_staff_proposal` and report results to 
