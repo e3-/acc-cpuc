@@ -1,6 +1,6 @@
 # CPUC ACC: Integrated Generation Capacity & GHG Avoided Cost Calculation
 
-This repository contains the proposed methodology for calculating Generation Capacity & GHG Avoided Costs as part of 
+This zip file contains the proposed methodology for calculating Generation Capacity & GHG Avoided Costs as part of 
 the California Public Utilities Commission (CPUC) Integrated Distributed Energy Resources (IDER) 2024 
 Avoided Cost Calculator (ACC) Staff Proposal. For more information, see the staff proposal & workshop materials on the 
 [CPUC website](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/energy-efficiency/idsm) 
@@ -8,16 +8,7 @@ Avoided Cost Calculator (ACC) Staff Proposal. For more information, see the staf
 
 ## Quick Start
 
-### 1. Download a Copy of this Code
-
-Click [this link](https://github.com/e3-/acc-cpuc/archive/refs/tags/0.1.0.zip) to download a zip file of this code. 
-Unzip the folder anywhere on your computer.
-
-_Note: This quick start guide assumes that you want to quickly download to code. More experienced users may want to use `git` to _clone_ 
-this repository, but that will not be discussed here._
-
-
-### 2. Install Python via Anaconda & Set Up a `conda` Environment 
+### 1. Install Python via Anaconda 
 
 We recommend using the [Anaconda](https://www.anaconda.com/download#downloads) Python distribution and package manager. 
 During the installation process, we recommend selecting the **"Add Anaconda to my PATH environment variable"** option
@@ -29,13 +20,15 @@ this means that you **did not** add Anaconda to your PATH. You can add either re
 add Anaconda to your PATH (see [these instructions](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/) for some help).
 ```
 
+### 2. Set Up a `conda` Environment 
+
 We will use the `conda` command to create an isolated virtual environment for this example code to run within, without 
 disturbing any other Python packages you may have already installed (see the [`conda` documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for more details on conda environments).
 
-To create the `conda` environment, we will use the [`environment.yml`](https://github.com/e3-/acc-cpuc/blob/main/environment.yml) file at the top level of the repository. 
-Use the following command to create the `conda` environment
+To create the `conda` environment, we will use the `environment.yml` file at the top level of the repository. 
+Open a [Command Prompt window and navigate to this folder (the "acc-cpuc" folder)](https://www.wikihow.com/Open-a-Folder-in-Cmd). More experienced users may use a different terminal (e.g., PowerShell, Terminal on macOS).
 
-Open a [Command Prompt window and navigate to this folder (the "acc-cpuc" folder)](https://www.wikihow.com/Open-a-Folder-in-Cmd). More experienced users may use a different terminal (e.g., PowerShell, Terminal on macOS). 
+Use the following command to create the `conda` environment:
 
 ```
 conda env create -f environment.yml
@@ -43,7 +36,7 @@ conda env create -f environment.yml
 
 ### 2. Activate the `conda` Environment
 
-From the same Command Prompt window, activate the `conda` environment:
+In the same Command Prompt window, use the following command to activate the `conda` environment:
 
 ```
 conda activate e3-acc
