@@ -8,7 +8,7 @@ authors=[
 requires-python = ">=3.9,<3.11"
 dependencies = [
     "ipywidgets==8.0.4",
-    "jupyterlab==3.5.3",
+    "jupyterlab==3.6.7",
     "jupytext==1.14.7",
     "loguru==0.6.0",
     "pandas==1.5.3",
