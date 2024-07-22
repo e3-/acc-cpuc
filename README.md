@@ -2,14 +2,22 @@
 
 This repository contains the proposed methodology for calculating Generation Capacity & GHG Avoided Costs as part of 
 the California Public Utilities Commission (CPUC) Integrated Distributed Energy Resources (IDER) 2024 
-Avoided Cost Calculator (ACC) Staff Proposal. For more information, see the staff proposal & workshop materials on the 
-[CPUC website](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/energy-efficiency/idsm) 
-(see the section called "2024 ACC Update Staff Proposal (R.22-11-013, Track 1)").
+Avoided Cost Calculator (ACC). For more information, see 2024 ACC Electric Model and Documentation
+[CPUC website](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/energy-efficiency/idsm). 
 
 ## Quick Start
 
-_Note: This quick start guide assumes you have already downloaded a zip file of this model code._
+_Note: This quick start guide assumes you have already cloned or downloaded a copy of this repository._
 
+### 0. Prepopulated Results
+This repository comes pre-populated with results for 3 ACC cases, each of which can be found in the [results](./results/) folder.
+* 2024ACC_TRC
+* 2024ACC_SCT_Base
+* 2024ACC_SCT_High
+
+The following instructions are for users interested in running cases.
+
+_Note: Parameters for each case are specified in the [acc.py file](./src/acc.py), inputs are in the [data folder](./data/processed/)._
 
 ### 1. Install Python via Anaconda 
 
@@ -36,7 +44,7 @@ conda env create -f environment.yml
 ```
 <div style="page-break-after: always;"></div>
 
-### 2. Activate the `conda` Environment
+### 3. Activate the `conda` Environment
 
 In the same Command Prompt window, use the following command to activate the `conda` environment:
 
@@ -51,12 +59,16 @@ If you are on a Mac or Linux computer, you will need to do one extra installatio
 conda install -c conda-forge coincbc
 ```
 
-### 3. Run the ACC Calculation
+### 4. Run the ACC Calculation
 
 In the same Command Prompt window, run the following command:
 ```commandline
 e3-acc-cpuc
 ```
 
-This will load the included input data from `./data/processed/07012023_staff_proposal` and report results to 
-`./results/07012023_staff_proposal/`.
+This will load the included input data from `./data/processed/{case_name}/` and report results to 
+`./results/{case_name}/`.
+
+Recall that parameters for each case are specified at the top of the [acc.py file](./src/acc.py), inputs are in the [data folder](./data/processed/). By default the code will generate results for the **2024ACC_TRC** case. 
+
+These parameters and inputs may be updated and then the code may be re-run using the `e3-acc-cpuc` command. 
